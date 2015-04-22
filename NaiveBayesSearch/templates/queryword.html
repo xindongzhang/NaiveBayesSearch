@@ -1,0 +1,52 @@
+$def with (QueryWord)
+
+<html>
+    <head>
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <style type="text/css">  
+            .center {
+                width: auto;
+                display: table;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            body {
+                padding-top: 60px;
+            }
+            .input-append{
+                width: 100%;
+            }
+            .full-width {
+                display:block;
+            }
+        </style>  
+        
+    </head>
+    
+    <div class="container">
+	    <div class="row">
+            <div class="col-lg-7 col-lg-offset-2 text-center">
+                <form id="custom-search-form" class="form-search form-inline form-horizontal pull-center" action="/" method="post">
+                    <div class="input-append span13">
+                        <input type="text" class="search-query" placeholder="Search" name="queryword">
+                        <button type="submit" class="btn btn-primary"> 搜索 </button>
+                    </div>
+                </form>
+                
+                <table class = "table">
+                    $if len(QueryWord) != 0:
+                        $for index in range(0, len(QueryWord)):
+                            <tr>
+                                <th>类别 $(index+1)</th>
+                                <th>$QueryWord[index][0]</th>
+                            </tr>
+                    $else:
+                        <h2>没有找到分类<h2>
+                </table>
+                
+            </div>
+	    </div>
+    </div>
+</html>
